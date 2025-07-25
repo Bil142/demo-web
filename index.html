@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demo Web | Soluciones Digitales Profesionales</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset y base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #0d47a1;
+      color: white;
+      padding: 1.2rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-weight: 600;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #90caf9;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .hero h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #0d47a1;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .service-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgb(0 0 0 / 0.15);
+    }
+    .service-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: #0d47a1;
+    }
+    .service-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #0d47a1;
+    }
+    .service-desc {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.4;
+    }
+
+    .cta-container {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+    .btn-primary {
+      background-color: #0d47a1;
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 10px rgb(13 71 161 / 0.4);
+    }
+    .btn-primary:hover {
+      background-color: #1565c0;
+      box-shadow: 0 6px 20px rgb(21 101 192 / 0.6);
+    }
+
+    footer {
+      background-color: #0d47a1;
+      color: white;
+      text-align: center;
+      padding: 1.2rem 2rem;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    /* Modal Landbot */
+    .landbot-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.65);
+      z-index: 9999;
+      backdrop-filter: blur(3px);
+    }
+    .landbot-frame {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 90%;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.2);
+      background-color: white;
+    }
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      font-weight: 700;
+      z-index: 10000;
+      user-select: none;
+      text-shadow: 0 0 5px rgba(0,0,0,0.7);
+    }
+
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .btn-primary {
+        width: 100%;
+        padding: 15px;
+        font-size: 1rem;
+      }
+      .service-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Demo Web</h1>
+    <nav>
+      <a href="#services">Servicios</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Soluciones Digitales Profesionales para tu Negocio</h2>
+      <p>Diseño web, tiendas online, bots inteligentes y SEO, todo en un solo lugar para impulsar tu empresa al siguiente nivel.</p>
+    </section>
+
+    <section id="services" class="services" aria-label="Servicios ofrecidos">
+      <article class="service-card" role="region" aria-labelledby="serv1-title">
+        <div class="service-icon">🌐</div>
+        <h3 id="serv1-title" class="service-title">Diseño Web</h3>
+        <p class="service-desc">Sitios web atractivos, modernos y responsivos adaptados a tus necesidades.</p>
+      </article>
+      <article class="service-card" role="region" aria-labelledby="serv2-title">
+        <div class="service-icon">🛒</div>
+        <h3 id="serv2-title" class="service-title">Tiendas Online</h3>
+        <p class="service-desc">Plataformas seguras y escalables para vender tus productos en línea.</p>
+      </article>
+      <article class="service-card" role="region" aria-labelledby="serv3-title">
+        <div class="service-icon">🤖</div>
+        <h3 id="serv3-title" class="service-title">Bots Inteligentes</h3>
+        <p class="service-desc">Asistentes virtuales que mejoran la atención y aumentan conversiones.</p>
+      </article>
+      <article class="service-card" role="region" aria-labelledby="serv4-title">
+        <div class="service-icon">📈</div>
+        <h3 id="serv4-title" class="service-title">SEO & Marketing</h3>
+        <p class="service-desc">Optimización para motores de búsqueda y estrategias digitales efectivas.</p>
+      </article>
+    </section>
+
+    <section class="cta-container" aria-label="Llamada a la acción principal">
+      <button class="btn-primary" onclick="abrirLandbot()" aria-haspopup="dialog" aria-controls="landbotModal">
+        💬 Habla con nuestro asistente virtual
+      </button>
+    </section>
+  </main>
+
+  <footer id="contact">
+    &copy; 2025 Demo Web | contacto@demo.com | +34 600 123 456
+  </footer>
+
+  <!-- LANDOBOT MODAL -->
+  <div id="landbotModal" class="landbot-modal" role="dialog" aria-modal="true" aria-labelledby="landbotLabel" aria-describedby="landbotDesc">
+    <span class="close-btn" onclick="cerrarLandbot()" aria-label="Cerrar asistente">✖</span>
+    <iframe
+      id="landbotFrame"
+      class="landbot-frame"
+      src="https://landbot.online/v3/H-3065424-XMMYB90QPEWO52J5/index.html"
+      allow="camera; microphone"
+      title="Asistente virtual Landbot"
+    ></iframe>
+  </div>
+
+  <script>
+    function abrirLandbot() {
+      document.getElementById("landbotModal").style.display = "block";
+      // Para accesibilidad, poner foco en el modal
+      document.getElementById("landbotModal").focus();
+    }
+
+    function cerrarLandbot() {
+      document.getElementById("landbotModal").style.display = "none";
+    }
+
+    // Cerrar modal con Escape
+    document.addEventListener('keydown', (e) => {
+      if(e.key === "Escape") {
+        cerrarLandbot();
+      }
+    });
+  </script>
+
+  <!-- BOTPRESS WEBCHAT -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"></script>
+  <script src="https://files.bpcontent.cloud/2025/07/24/16/20250724163120-DTTH0OLB.js"></script>
+
+</body>
+</html>
